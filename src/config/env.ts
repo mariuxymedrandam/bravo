@@ -5,7 +5,7 @@ const boolString = z.string().optional().transform((value) => value === 'true');
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().positive().default(3000),
-  APP_NAME: z.string().default('M&M Ganadería'),
+  APP_NAME: z.string().default('SIGVB'),
   API_PREFIX: z.string().default('/api'),
   PUBLIC_BASE_URL: z.string().default('http://localhost:3000'),
   FRONTEND_URL: z.string().default('http://localhost:5173'),
@@ -26,11 +26,12 @@ const envSchema = z.object({
   MAX_MEDIA_MB: z.coerce.number().positive().default(40),
   BREVO_API_KEY: z.string().optional(),
   BREVO_SENDER_EMAIL: z.string().email().optional(),
-  BREVO_SENDER_NAME: z.string().default('M&M Ganadería'),
+  BREVO_SENDER_NAME: z.string().default('SIGVB'),
   BOOTSTRAP_ADMIN_EMAIL: z.string().email().optional(),
   BOOTSTRAP_ADMIN_PASSWORD: z.string().min(8).optional(),
   BOOTSTRAP_ADMIN_NAMES: z.string().default('Administrador'),
-  BOOTSTRAP_ADMIN_LASTNAMES: z.string().default('M&M')
+  BOOTSTRAP_ADMIN_LASTNAMES: z.string().default('SIGVB'),
+  BOOTSTRAP_ADMIN_KEY: z.string().min(32).optional()
 });
 
 const parsed = envSchema.safeParse(process.env);
